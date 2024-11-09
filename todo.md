@@ -1,0 +1,3 @@
+- add macros to models for
+  - custom count
+  - db chunk

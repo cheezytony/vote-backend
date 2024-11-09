@@ -1,3 +1,4 @@
+import { UserStatus } from '#models/user'
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
@@ -5,13 +6,15 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').notNullable()
-      table.string('full_name').nullable()
-      table.string('email', 254).notNullable().unique()
-      table.string('password').notNullable()
+      table.string('id').primary()
 
-      table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at').nullable()
+      table.string('first_name').nullable().after('id')
+      table.string('last_name').nullable().after('first_name')
+      table.string('password').notNullable().after('last_name')
+      table.string('status').defaultTo(UserStatus.ACTIVE).notNullable().index().after('password')
+
+      table.timestamp('created_at').notNullable().after('status')
+      table.timestamp('updated_at').nullable().after('updated_at')
     })
   }
 

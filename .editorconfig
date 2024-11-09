@@ -1,6 +1,7 @@
 # http://editorconfig.org
 
 [*]
+max_line_length=80
 indent_style = space
 indent_size = 2
 end_of_line = lf

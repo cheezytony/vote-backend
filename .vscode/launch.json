@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach Program",
+      "port": 9229,
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Dev server",
+      "program": "${workspaceFolder}/ace.js",
+      "args": ["serve", "--hmr"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Tests",
+      "program": "${workspaceFolder}/ace.js",
+      "args": ["test", "--watch"],
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
